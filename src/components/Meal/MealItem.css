@@ -1,20 +1,84 @@
-/* MealItem.css */
-ul {
-    border-radius: 10px;
-    width: 900px;
-    padding: 10px;
-    margin: 20px;
-    margin-top: 30px;
-    margin-left: 250px;
-    box-shadow: 0 4px 8px rgb(0, 0, 0);
-    background-color: #f3f4f6;
-  }
+/* ... existing styles ... */
+
 .meal-item {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-  }
-  .price{
-    color: rgb(255, 0, 0);
-    font-weight: bold;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+  margin-bottom: 15px;
+}
+
+.meal-item .left-content {
+  flex: 1;
+}
+
+.meal-item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.meal-item .description {
+  color: #666;
+}
+
+.meal-item .price {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
+
+.meal-item .right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 35%;
+}
+
+.meal-item .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align amount label and input to the right */
+  margin-bottom: 10px;
+}
+
+.meal-item label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  font-size: 0.8rem; /* Adjusted font size */
+}
+
+.meal-item input[type="number"] {
+  width: calc(8% - 12px); /* Adjusted input width */
+  padding: 4px; /* Adjusted padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 0.8rem; /* Adjusted font size */
+}
+
+.meal-item button {
+  padding: 6px 12px; /* Adjusted padding */
+  border: none;
+  border-radius: 15px;
+  background-color: #dc2626;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+}
+
+.meal-item button:hover {
+  background-color: #c53030;
+}
+
+/* Adjustments for the ul */
+ul {
+  border-radius: 10px;
+  width: 900px;
+  padding: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f3f4f6;
+}
