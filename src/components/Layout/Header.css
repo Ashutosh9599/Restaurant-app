@@ -1,0 +1,63 @@
+/* Header.css */
+
+/* Styles for the header */
+.header {
+    background-color: rgb(158, 29, 29);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .left-side h1 {
+    margin: 0;
+    margin-left: 130px;
+  }
+  
+  /* Styles for the cart button */
+  .cart-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* Styles for the right-side content */
+  .right-side {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 200px;
+    margin-right: 150px;
+    background-color: rgb(112, 25, 25);
+    border-radius: 26px;
+  }
+  
+  /* Styles for cart icon, text, and count */
+  .cart-icon {
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .cart-icon i {
+    margin-right: 10px;
+  }
+  
+  .cart {
+    margin-left: 10px;
+  }
+  
+  .cart-count {
+    background-color: rgb(158, 29, 29);
+    color: #fff;
+    border-radius: 40%;
+    padding: 5px 8px;
+    margin-left: 10px;
+  }
+  
