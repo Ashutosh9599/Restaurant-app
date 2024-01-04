@@ -3,6 +3,7 @@
 .summary-card {
     background-color: #2f2f2f;
     border-radius: 10px;
+    float: center;
     width: 700px;
     padding: 20px;
     margin: 20px;

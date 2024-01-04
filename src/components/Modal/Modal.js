@@ -1,28 +1,31 @@
-import React from 'react';
+import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import './Modal.css'; 
 
-const Modal = ({ onClose, meals, totalAmount }) => {
-  return ReactDOM.createPortal(
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
-          Close
-        </button>
-        <h2>Your Cart</h2>
-        <ul>
-          {meals.map((meal) => (
-            <li key={meal.id}>
-              {meal.name} - ${meal.price}
-            </li>
-          ))}
-        </ul>
-        <p>Total: ${totalAmount}</p>
-        <button>Order</button>
-        <button>Cancel</button>
-      </div>
-    </div>,
-    document.getElementById('modal-root')
+import "./Modal.css"
+
+const Backdrop = (props) => {
+  return <div className="backdrop" onClick={props.onClose} />;
+};
+
+const ModalOverlay = (props) => {
+  return (
+    <div className="modal">
+      <div className="content">{props.children}</div>
+    </div>
+  );
+};
+
+const Modal = (props) => {
+  return (
+    <Fragment>
+      {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />,
+        document.getElementById('modal-root'))}
+      {ReactDOM.createPortal(
+        <ModalOverlay>{props.children}</ModalOverlay>,
+
+        document.getElementById('modal-root')
+      )}
+    </Fragment>
   );
 };
 
