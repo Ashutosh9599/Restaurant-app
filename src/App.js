@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
 import Header from "./components/Layout/Header";
 import Summary from "./components/Layout/Summary";
 import MealItem from "./components/Meal/MealItem";
+import Modal from './components/Modal/Modal'; 
 
 const DUMMY_MEALS = [
   {
@@ -43,19 +45,41 @@ const DUMMY_MEALS = [
 
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const addToCartHandler = (meal) => {
+    setCartItems((prevCartItems) => [...prevCartItems, meal]);
+  };
+
+  const cartButtonClickHandler = () => {
+    setShowCart(true);
+  };
+
+  const closeCartHandler = () => {
+    setShowCart(false);
+  };
+
+  const totalAmount = cartItems.reduce((acc, item) => acc + item.price, 0).toFixed(2);
+
   const mealItems = DUMMY_MEALS.map((meal) => (
     <MealItem
       key={meal.id}
       name={meal.name}
       description={meal.description}
       price={meal.price}
+      onAddToCart={() => addToCartHandler(meal)}
     />
   ));
+
   return (
     <div className="App">
-      <Header />
+      <Header onCartClick={cartButtonClickHandler} />
       <Summary />
       <ul>{mealItems}</ul>
+      {showCart && (
+        <Modal onClose={closeCartHandler} meals={cartItems} totalAmount={totalAmount} />
+      )}
     </div>
   );
 }
