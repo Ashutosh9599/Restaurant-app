@@ -1,16 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import CartContext from '../Store/CartContext';
 import "./Header.css";
 
 const Header = (props) => {
+  const cartCtx = React.useContext(CartContext); 
+  const totalCartItems = cartCtx.items.reduce((count, item) => count + item.amount, 0);
+
   return (
     <header className="header">
-        <h1>ReactMeals</h1>
-      <button className="cart-button"  onClick={props.onShowCart}>
+      <h1>ReactMeals</h1>
+      <button className="cart-button" onClick={props.onShowCart}>
         <span className='cart-icon'><FontAwesomeIcon icon={faShoppingCart} /></span>
-            <span className="cart">Your Cart</span>
-            <span className="cart-count">0</span>
+        <span className="cart">Your Cart</span>
+        <span className="cart-count">{totalCartItems}</span>
       </button>
     </header>
   );

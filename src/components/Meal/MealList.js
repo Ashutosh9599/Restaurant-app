@@ -1,8 +1,7 @@
-
-import MealItem from "./MealItem";
-
+import React from 'react';
+import { useCart } from '../Store/CartContext';
+import MealItem from './MealItem';
 import "./MealList.css";
-
 const DUMMY_MEALS = [
     {
       id: 'm1',
@@ -42,22 +41,25 @@ const DUMMY_MEALS = [
     },
   ];
 
-const Meallist = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => (
-    <MealItem
-      id={meal.id}
-      key={meal.id}
-      name={meal.name}
-      description={meal.description}
-      price={meal.price}
-    />
-  ));
-
-  return (
-    <div>
+  const Meallist = () => {
+    const cartCtx = useCart();
+  
+    const mealsList = DUMMY_MEALS.map((meal) => (
+      <MealItem
+        key={meal.id}
+        id={meal.id}
+        name={meal.name}
+        description={meal.description}
+        price={meal.price}
+        onAddToCart={cartCtx.addItem}
+      />
+    ));
+  
+    return (
+      <div>
         <ul className="MealList">{mealsList}</ul>
-    </div>
-  );
-};
-
-export default Meallist;
+      </div>
+    );
+  };
+  
+  export default Meallist;
